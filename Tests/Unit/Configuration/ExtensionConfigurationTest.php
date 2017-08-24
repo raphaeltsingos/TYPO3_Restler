@@ -52,8 +52,12 @@ class ExtensionConfigurationTest extends BaseTest
     {
         parent::setUp();
 
-        $this->originalExtConfig = $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['restler'];
-        $modifiedExtConfig = unserialize($this->originalExtConfig);
+        $this->originalExtConfig = [];
+        $modifiedExtConfig = [];
+        if (isset($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['restler'])) {
+            $this->originalExtConfig = $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['restler'];
+            $modifiedExtConfig = unserialize($this->originalExtConfig);
+        }
         $modifiedExtConfig['refreshCache'] = '0';
         $modifiedExtConfig['productionContext'] = '1';
         $modifiedExtConfig['enableOnlineDocumentation'] = '1';

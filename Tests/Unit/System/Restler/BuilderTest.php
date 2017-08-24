@@ -79,7 +79,10 @@ class BuilderTest extends BaseTest
     {
         parent::setUp();
 
-        $this->originalRestlerConfigurationClasses = $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['restler']['restlerConfigurationClasses'];
+        $this->originalRestlerConfigurationClasses = [];
+        if (isset($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['restler']['restlerConfigurationClasses'])) {
+            $this->originalRestlerConfigurationClasses = $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['restler']['restlerConfigurationClasses'];
+        }
         $this->originalServerVars = $_SERVER;
 
         $this->extensionConfigurationMock = $this->getMockBuilder(ExtensionConfiguration::class)
