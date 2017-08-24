@@ -118,7 +118,7 @@ class ExtensionManagementUtility
      */
     private function getExtLocalconfCacheIdentifier()
     {
-        return 'ext_localconf_rest_api_' . sha1((TYPO3_version . PATH_site . 'extLocalconf'));
+        return 'ext_localconf_rest_api_' . sha1(($this->getTypoVersion() . PATH_site . 'extLocalconf'));
     }
 
     /**
@@ -153,5 +153,17 @@ class ExtensionManagementUtility
             return true;
         }
         return false;
+    }
+
+    /**
+     * @return int
+     */
+    private function getTypoVersion()
+    {
+        $typo3Version = \TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(
+            \TYPO3\CMS\Core\Utility\VersionNumberUtility::getNumericTypo3Version()
+        );
+
+        return $typo3Version;
     }
 }

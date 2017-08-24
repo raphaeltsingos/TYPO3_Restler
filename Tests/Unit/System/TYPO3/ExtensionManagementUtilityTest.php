@@ -67,7 +67,10 @@ class ExtensionManagementUtilityTest extends BaseTest
         $this->extensionConfiguration = $this->getMockBuilder('Aoe\\Restler\\Configuration\\ExtensionConfiguration')
             ->disableOriginalConstructor()->getMock();
         $this->utility = new ExtensionManagementUtility($this->cacheManager, $this->extensionConfiguration);
-        $this->savedConfigurationOfTYPO3loadedExtensions = $GLOBALS['TYPO3_LOADED_EXT'];
+        $this->savedConfigurationOfTYPO3loadedExtensions = [];
+        if(in_array('TYPO3_LOADED_EXT', $GLOBALS)) {
+            $this->savedConfigurationOfTYPO3loadedExtensions = $GLOBALS['TYPO3_LOADED_EXT'];
+        }
     }
 
     /**
