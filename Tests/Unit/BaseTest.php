@@ -58,7 +58,6 @@ abstract class BaseTest extends UnitTestCase
     protected function setUp()
     {
         parent::setUp();
-
         $this->setAutoLoadingForRestler();
     }
 

@@ -295,8 +295,11 @@ class BuilderTest extends BaseTest
     public function addApiControllerClassesFromLocalConf()
     {
         // setup
-        $backupGlobals = $GLOBALS['TYPO3_Restler']['addApiClass'];
-        unset($GLOBALS['TYPO3_Restler']['addApiClass']);
+        $backupGlobals = [];
+        if (isset($GLOBALS['TYPO3_Restler']['addApiClass'])) {
+            $backupGlobals = $GLOBALS['TYPO3_Restler']['addApiClass'];
+            unset($GLOBALS['TYPO3_Restler']['addApiClass']);
+        }
         $GLOBALS['TYPO3_Restler']['addApiClass']['foopath'][] = 'BarController';
 
         $restlerObj = $this->getMockBuilder('Aoe\\Restler\\System\\Restler\\RestlerExtended')->disableOriginalConstructor()->getMock();

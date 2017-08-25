@@ -42,14 +42,17 @@ class ExtensionManagementUtilityTest extends BaseTest
      * @var CacheManager
      */
     protected $cacheManager;
+
     /**
      * @var ExtensionConfiguration
      */
     protected $extensionConfiguration;
+
     /**
      * @var ExtensionManagementUtility
      */
     protected $utility;
+
     /**
      * @var array
      */
@@ -78,9 +81,8 @@ class ExtensionManagementUtilityTest extends BaseTest
      */
     protected function tearDown()
     {
-        parent::tearDown();
-
         $GLOBALS['TYPO3_LOADED_EXT'] = $this->savedConfigurationOfTYPO3loadedExtensions;
+        parent::tearDown();
     }
 
     /**
